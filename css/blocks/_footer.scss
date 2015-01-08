@@ -1,0 +1,17 @@
+.b-footer {
+  background: #ccc;
+  padding: 20px 0;
+
+
+    .footer-copyright {
+      @include span(6);
+      background: #2980b9;
+    }
+
+    .footer-social {
+      @include span(6);
+
+      background: #95a5a6;
+      text-align: right;
+    }
+}

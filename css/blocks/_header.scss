@@ -1,0 +1,28 @@
+.b-header {
+  padding: 20px 0;
+  background: #2ecc71;
+
+  @include with-layout(inside) {
+    .header-address {
+      @include span(4);
+
+      background: #3498db;
+    }
+
+    .header-logo {
+      @include span(4 nest);
+      @include bleed-y(20px);
+
+      text-align: center;
+      background: #9b59b6;
+    }
+
+    .header-phone {
+      @include span(4);
+
+      text-align: right;
+      background: #2c3e50;
+      color: #fff;
+    }
+  }
+}

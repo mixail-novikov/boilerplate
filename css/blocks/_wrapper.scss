@@ -1,0 +1,13 @@
+.b-wrapper {
+  @include container;
+  @include clearfix;
+  &.wrapper-inside-full-height {
+    display: table;
+    > div {
+      float:none;
+      display: table-cell;
+      vertical-align: top;
+      height: 100%;
+    }
+  }
+}
