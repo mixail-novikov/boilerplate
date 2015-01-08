@@ -1,0 +1,14 @@
+/*
+Paul Irish
+http://www.paulirish.com/2012/box-sizing-border-box-ftw/
+*/
+
+html {
+  @include box-sizing(border-box);
+}
+
+*,
+*:before,
+*.after {
+  @include box-sizing(inherit);
+}
