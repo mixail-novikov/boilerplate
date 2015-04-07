@@ -1,0 +1,21 @@
+{
+  "name": "boilerplate",
+  "version": "0.0.1",
+  "homepage": "https://github.com/mixail-novikov/boilerplate",
+  "authors": [
+    "Mikhail Novikov <mixail.novikov@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "components/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "susy": "~2.2.2",
+    "bourbon": "~4.2.2"
+  }
+}

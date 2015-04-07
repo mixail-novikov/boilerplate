@@ -1,10 +1,8 @@
-@import "vendor/bourbon/bourbon";
-@import "vendor/susy/susy";
-@import "vendor/breakpoint/breakpoint";
+@import "../components/bourbon/app/assets/stylesheets/bourbon";
+@import "../components/susy/sass/susy";
 
 @import "vendor/reset";
 @import "vendor/box-sizing";
-@import "vendor/base/base";
 
 @import "settings";
 
