@@ -2,10 +2,11 @@
 /* global susy settings */
 $susy: (
   columns: 12,
-  gutters: 0.25,
+  gutters: 30/70,
   gutter-position: split,
   container: 1200px,
   global-box-sizing: border-box,
   output: float
 );
+
 

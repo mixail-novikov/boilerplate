@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 @import "../components/bourbon/app/assets/stylesheets/bourbon";
 @import "../components/susy/sass/susy";
 
@@ -6,9 +8,5 @@
 
 @import "settings";
 
-@import "blocks/wrapper";
-@import "blocks/header";
-@import "blocks/content";
-@import "blocks/sidebar";
-@import "blocks/footer";
-
+@import "base/base";
+@import "blocks/blocks";

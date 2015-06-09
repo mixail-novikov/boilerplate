@@ -1,0 +1,25 @@
+p {
+  line-height: 2;
+  margin-bottom: 24px;
+}
+
+p {
+  &.p-small-size {
+    font-size: 13px;
+    line-height: 18px;
+  }
+
+  &.p-align-center {
+    text-align: center;
+  }
+}
+
+.p-align {
+  &.align-center {
+    text-align: center;
+  }
+
+  &.align-right {
+    text-align: right;
+  }
+}
