@@ -1,0 +1,18 @@
+@mixin loadBg {
+  .js-load-bg & {
+    @content;
+  }
+}
+
+@mixin linecount($fz, $lh, $ls) {
+  display: block;
+  display: -webkit-box;
+  height: $fz*$lh*$ls;
+  margin: 0;
+  font-size: $fz;
+  line-height: $lh;
+  -webkit-line-clamp: $ls;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

@@ -1,0 +1,54 @@
+/*
+SCSS variables are information about icon's compiled state, stored under its original file name
+
+.icon-home {
+  width: $icon-home-width;
+}
+
+The large array-like variables contain all information about a single icon
+$icon-home: x y offset_x offset_y width height total_width total_height image_path;
+
+At the bottom of this section, we provide information about the spritesheet itself
+$spritesheet: width height image $spritesheet-sprites;
+*/
+$man-name: 'man';
+$man-x: 0px;
+$man-y: 0px;
+$man-offset-x: 0px;
+$man-offset-y: 0px;
+$man-width: 50px;
+$man-height: 50px;
+$man-total-width: 105px;
+$man-total-height: 50px;
+$man-image: '../img/sprite.png';
+$man: (0px, 0px, 0px, 0px, 50px, 50px, 105px, 50px, '../img/sprite.png', 'man', );
+$rabbit-name: 'rabbit';
+$rabbit-x: 55px;
+$rabbit-y: 0px;
+$rabbit-offset-x: -55px;
+$rabbit-offset-y: 0px;
+$rabbit-width: 50px;
+$rabbit-height: 50px;
+$rabbit-total-width: 105px;
+$rabbit-total-height: 50px;
+$rabbit-image: '../img/sprite.png';
+$rabbit: (55px, 0px, -55px, 0px, 50px, 50px, 105px, 50px, '../img/sprite.png', 'rabbit', );
+$spritesheet-width: 105px;
+$spritesheet-height: 50px;
+$spritesheet-image: '../img/sprite.png';
+$spritesheet-sprites: ($man, $rabbit, );
+$spritesheet: (105px, 50px, '../img/sprite.png', $spritesheet-sprites, );
+
+
+@mixin sprites($sprites) {
+  @each $sprite in $sprites {
+    $sprite-name: nth($sprite, 10);
+    &.icon-#{$sprite-name} {
+      width: nth($sprite, 5);
+      height: nth($sprite, 6);
+      $sprite-offset-x: nth($sprite, 3);
+      $sprite-offset-y: nth($sprite, 4);
+      background-position: $sprite-offset-x  $sprite-offset-y;
+    }
+  }
+}

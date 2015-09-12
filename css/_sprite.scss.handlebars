@@ -1,0 +1,16 @@
+{{#extend "scss"}}
+{{#content "spritesheet-functions"}}
+@mixin sprites($sprites) {
+  @each $sprite in $sprites {
+    $sprite-name: nth($sprite, 10);
+    &.icon-#{$sprite-name} {
+      width: nth($sprite, 5);
+      height: nth($sprite, 6);
+      $sprite-offset-x: nth($sprite, 3);
+      $sprite-offset-y: nth($sprite, 4);
+      background-position: $sprite-offset-x  $sprite-offset-y;
+    }
+  }
+}
+{{/content}}
+{{/extend}}
