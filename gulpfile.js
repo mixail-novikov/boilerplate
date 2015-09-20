@@ -5,17 +5,14 @@ var merge = require('merge-stream');
 
 gulp.task('sass', function() {
     gulp.src('./css/style.scss')
-        .pipe($.sourcemaps.init())
-        .pipe($.sass({
-            errLogToConsole: true
-        }))
-        .pipe($.sourcemaps.write())
+        .pipe($.sass())
+        .on('error', $.notify.onError())
         .pipe(gulp.dest('./css/'))
         .pipe($.minifyCss())
         .pipe($.rename({
             suffix: '.min'
         }))
-        .pipe(gulp.dest('./css/'));
+        .pipe(gulp.dest('./css/'))
 });
 
 gulp.task('sprite', function() {
@@ -28,10 +25,12 @@ gulp.task('sprite', function() {
                 padding: 5,
                 'functions': true,
                 'variableNameTransforms': ['dasherize']
-            }));
+            }))
+            .on('error', $.notify.onError());
 
     var imgStream = spriteData.img
         .pipe($.imagemin())
+        .on('error', $.notify.onError())
         .pipe(gulp.dest('./img/'));
 
     var cssStream = spriteData.css
@@ -43,6 +42,7 @@ gulp.task('sprite', function() {
 gulp.task('imagemin', function() {
     return gulp.src(['./img/**/*', '!img/icons/**/*'])
         .pipe($.imagemin())
+        .on('error', $.notify.onError())
         .pipe(gulp.dest('./img/'));
 });
 
@@ -50,13 +50,18 @@ gulp.task('js', function() {
     return gulp.src('./js/main.js')
         .pipe(gulp.dest('./js/'))
         .pipe($.uglifyjs())
+        .on('error', $.notify.onError())
         .pipe($.rename({
             suffix: '.min'
         }))
         .pipe(gulp.dest('./js/'));
 });
 
-// Watch scss folder for changes
+gulp.task('serve', $.serve({
+    root: './',
+    port: 3000
+}));
+
 gulp.task('watch', function() {
     gulp.watch('css/**/*.{scss,sass}', ['sass']);
     gulp.watch('img/icons/**/*', ['sprite']);
@@ -64,4 +69,4 @@ gulp.task('watch', function() {
 });
 
 // Creating a default task
-gulp.task('default', ['watch', 'sass', 'sprite']);
+gulp.task('default', ['watch', 'serve']);
