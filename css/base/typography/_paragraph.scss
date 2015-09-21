@@ -1,25 +1,18 @@
 p {
-  line-height: 2;
-  margin-bottom: 24px;
+  line-height: 1.5;
+  margin-bottom: .5em;
 }
 
 p {
   &.p-small-size {
-    font-size: 13px;
-    line-height: 18px;
+    font-size: 0.8em;
   }
 
   &.p-align-center {
     text-align: center;
   }
-}
 
-.p-align {
-  &.align-center {
-    text-align: center;
-  }
-
-  &.align-right {
+  &.p-align-right {
     text-align: right;
   }
 }

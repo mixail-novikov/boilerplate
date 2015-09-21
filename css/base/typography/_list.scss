@@ -1,7 +1,6 @@
 .b-list {
-
-  line-height: 2;
-  margin-bottom: 24px;
+  line-height: 1.5;
+  margin-bottom: .5em;
 
   .list-item {
     margin-bottom: 3px;
@@ -18,9 +17,5 @@
         margin-right: 6px;
       }
     }
-  }
-
-  &.list-size-large {
-    font-size: 16px;
   }
 }

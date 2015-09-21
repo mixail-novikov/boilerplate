@@ -1,9 +1,10 @@
-$franklin: "Franklin Gothic", serif;
-$openSans: 'Open Sans', sans-serif;
+$headingFont: 'Times New Roman', serif;
+$baseFont: 'Open Sans', sans-serif;
 
 @import "html";
 @import "headings";
 @import "strong";
+@import "em";
 @import "paragraph";
 @import "list";
 @import "link";
