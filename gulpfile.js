@@ -4,9 +4,9 @@ var gulp = require('gulp'),
 var merge = require('merge-stream');
 
 gulp.task('sass', function() {
-    gulp.src('./css/style.scss')
+    return gulp.src('./css/style.scss')
+        .pipe($.plumber({errorHandler: $.notify.onError()}))
         .pipe($.sass())
-        .on('error', $.notify.onError())
         .pipe(gulp.dest('./css/'))
         .pipe($.minifyCss())
         .pipe($.rename({
@@ -17,7 +17,8 @@ gulp.task('sass', function() {
 
 gulp.task('sprite', function() {
     var spriteData =
-        gulp.src('./img/icons/**/*') // путь, откуда берем картинки для спрайта
+        gulp.src('./img/icons/**/*')
+            .pipe($.plumber({errorHandler: $.notify.onError()}))
             .pipe($.spritesmith({
                 imgName: '../img/sprite.png',
                 cssName: '_sprite.scss',
@@ -25,12 +26,11 @@ gulp.task('sprite', function() {
                 padding: 5,
                 'functions': true,
                 'variableNameTransforms': ['dasherize']
-            }))
-            .on('error', $.notify.onError());
+            }));
 
     var imgStream = spriteData.img
+        .pipe($.plumber({errorHandler: $.notify.onError()}))
         .pipe($.imagemin())
-        .on('error', $.notify.onError())
         .pipe(gulp.dest('./img/'));
 
     var cssStream = spriteData.css
@@ -41,16 +41,16 @@ gulp.task('sprite', function() {
 
 gulp.task('imagemin', function() {
     return gulp.src(['./img/**/*', '!img/icons/**/*'])
+        .pipe($.plumber({errorHandler: $.notify.onError()}))
         .pipe($.imagemin())
-        .on('error', $.notify.onError())
         .pipe(gulp.dest('./img/'));
 });
 
 gulp.task('js', function() {
     return gulp.src('./js/main.js')
-        .pipe(gulp.dest('./js/'))
+        .pipe($.plumber({errorHandler: $.notify.onError()}))
+        //.pipe(gulp.dest('./js/'))
         .pipe($.uglifyjs())
-        .on('error', $.notify.onError())
         .pipe($.rename({
             suffix: '.min'
         }))
@@ -66,6 +66,7 @@ gulp.task('watch', function() {
     gulp.watch('css/**/*.{scss,sass}', ['sass']);
     gulp.watch('img/icons/**/*', ['sprite']);
     gulp.watch(['img/**/*', '!img/icons/**/*', '!img/sprite.png'], ['imagemin']);
+    gulp.watch(['js/**/*.js', '!**/*.min.js'], ['js']);
 });
 
 // Creating a default task
