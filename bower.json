@@ -16,6 +16,7 @@
   ],
   "dependencies": {
     "bourbon": "~4.2.5",
-    "susy": "~2.2.6"
+    "susy": "~2.2.6",
+    "jquery": "~2.1.4"
   }
 }
